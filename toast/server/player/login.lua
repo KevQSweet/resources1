@@ -30,7 +30,7 @@ function loginUser(password)
 				TriggerClientEvent("clientPlayerData", source, Users[GetPlayerName(source)]['money'])
 				TriggerClientEvent("createTimer", source)
 				TriggerClientEvent("clientPaid", source)
-				TriggerServerEvent("debugLogs", username, " has logged in.")
+				TriggerServerEvent("debugLogs", username.." has logged in.")
 				--print(Users[username].."has logged in.")
 			else
 				SendPlayerChatMessage(source, username..", you entered an invalid password !")
