@@ -22,7 +22,7 @@ function loginUser(password)
 		if(password ~= nil) then
 			if(Users[username]['password'] == password) then 
 				Users[username]['isLoggedIn'] = 1
-				SendPlayerChatMessage(source, "?? You've successfully logged in !")
+				SendPlayerChatMessage(source, "You have successfully logged in as: "..username)
 				TriggerClientEvent("AwesomeFreeze", source, false)
 				TriggerClientEvent("AwesomeInvisible", source, false)
 				TriggerClientEvent("AwesomeGod", source, false)
@@ -30,10 +30,11 @@ function loginUser(password)
 				TriggerClientEvent("clientPlayerData", source, Users[GetPlayerName(source)]['money'])
 				TriggerClientEvent("createTimer", source)
 				TriggerClientEvent("clientPaid", source)
-				print(Users[username].."has logged in.")
+				TriggerServerEvent("debugLogs", username, " has logged in.")
+				--print(Users[username].."has logged in.")
 			else
-				SendPlayerChatMessage(source, "?? You entered an invalid password !")
-				print(Users[username].."has entered an invalid password.")
+				SendPlayerChatMessage(source, username..", you entered an invalid password !")
+				TriggerServerEvent("debugLogs", username.." has entered an invalid password.")
 			end
 		end
 	end
